@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Patria Libre - Punta Cana / Bavaro</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Documentación de la coordinación de Patria Libre en Punta Cana y Bavaro, República Dominicana">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇩🇴</text></svg>">
+
+  <!-- Theme: vue (azul, profesional, limpio) -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+
+  <style>
+    :root {
+      --theme-color: #0066cc;
+      --theme-color-secondary: #cc0000;
+    }
+
+    /* Personalización de colores para Patria Libre */
+    .app-name-link img {
+      width: 2rem;
+    }
+
+    .sidebar-nav > ul > li > a {
+      font-weight: bold;
+    }
+
+    /* Mejorar legibilidad en móvil */
+    @media screen and (max-width: 768px) {
+      .markdown-section {
+        padding: 1rem;
+      }
+    }
+
+    /* Badge personalizado */
+    .sidebar .app-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      padding: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">Cargando...</div>
+  <script>
+    window.$docsify = {
+      name: '🇩🇴 Patria Libre<br><small>Punta Cana / Bavaro</small>',
+      repo: 'giterick/patrialibre',
+      loadSidebar: true,
+      subMaxLevel: 3,
+      auto2top: true,
+      homepage: 'README.md',
+
+      // Búsqueda
+      search: {
+        maxAge: 86400000, // 1 día de cache
+        paths: 'auto',
+        placeholder: 'Buscar...',
+        noData: 'No se encontraron resultados',
+        depth: 3,
+        hideOtherSidebarContent: false,
+      },
+
+      // Paginación
+      pagination: {
+        previousText: '← Anterior',
+        nextText: 'Siguiente →',
+        crossChapter: true,
+      },
+
+      // Copiar código
+      copyCode: {
+        buttonText : 'Copiar',
+        errorText  : 'Error',
+        successText: 'Copiado!'
+      },
+
+      // Footer
+      plugins: [
+        function(hook, vm) {
+          hook.beforeEach(function (html) {
+            return html;
+          });
+
+          hook.afterEach(function (html) {
+            var footer = [
+              '<hr/>',
+              '<footer style="text-align: center; padding: 2rem 0; color: #999;">',
+              '<p><strong>Por la Soberanía, la Vida, la Libertad y la Prosperidad 🇩🇴</strong></p>',
+              '<p style="font-size: 0.9rem;">',
+              '<a href="https://patrialibre.do" target="_blank">patrialibre.do</a> | ',
+              '<a href="https://instagram.com/patrialibre.do" target="_blank">Instagram</a> | ',
+              '<a href="https://twitter.com/Patrialibre_do" target="_blank">Twitter/X</a>',
+              '</p>',
+              '<p style="font-size: 0.8rem; color: #bbb;">Última actualización: ' + new Date().toLocaleDateString('es-DO') + '</p>',
+              '</footer>'
+            ].join('');
+            return html + footer;
+          });
+        }
+      ],
+
+      // Colapsado de sidebar
+      sidebarDisplayLevel: 1,
+
+      // Configuración de enlaces
+      externalLinkTarget: '_blank',
+
+      // Tabs (por si lo necesitas)
+      tabs: {
+        persist    : true,
+        sync       : true,
+        theme      : 'classic',
+        tabComments: true,
+        tabHeadings: true
+      }
+    }
+  </script>
+
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
+  <!-- Búsqueda -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+
+  <!-- Copiar código -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+
+  <!-- Paginación -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js"></script>
+
+  <!-- Zoom de imágenes -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+
+  <!-- Emoji -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+
+  <!-- Tabs -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+
+  <!-- Syntax highlighting (opcional, para código) -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-markdown.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+</body>
+</html>
