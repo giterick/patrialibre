@@ -1,0 +1,30 @@
+# Archivos privados y sensibles
+datos-personales/
+contactos-privados/
+*.private.md
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Archivos temporales
+*.tmp
+*.bak
+*.log
+
+# Información sensible
+firmas-recolectadas/
+base-datos-voluntarios/
+presupuesto-detallado/
+
+# Configuración local
+.vscode/
+.idea/
+*.code-workspace
+
+# Archivos de Office temporales
+~$*
+*.tmp
