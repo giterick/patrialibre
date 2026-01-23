@@ -2,8 +2,33 @@
 
 **Tipo:** Reunión de Organización Inicial
 **Coordinación:** Punta Cana / Bavaro
-**Estado:** En Planificación
+**Estado:** En Planificación - Poll #2 Activo
 **Prioridad:** ALTA (Debe ocurrir antes de actividades de recolección)
+
+---
+
+## 📊 Historial de Coordinación
+
+### Poll #1 - Semana del 20 de enero 2026
+- **Estado:** CANCELADO por falta de quórum
+- **Resultado:** Solo 2 de 24 personas votaron
+- **Duración del poll:** ~2 días
+- **Lección aprendida:** Se decidió crear un grupo separado de voluntarios activos
+
+### Poll #2 - Semana del 27 de enero 2026
+- **Estado:** ACTIVO
+- **Herramienta:** Rallly (rallly.co)
+- **Plazo para votar:** Domingo 26 de enero, 7:00 PM
+- **Fechas ofrecidas:**
+  - Lun 27 - Vie 31 Ene: 7:00 PM - 9:00 PM
+  - Sáb 1 Feb: 10:00 AM - 9:00 PM (bloques de 2 horas)
+- **Duración de reunión:** 2 horas
+- **Modalidad:** Presencial
+- **Ubicación:** Entre Punta Cana y Bávaro (a definir según quórum)
+
+**Acción post-poll:**
+- Los que voten (aunque sea "no puedo") → Nuevo grupo de voluntarios activos
+- Los que no voten → Permanecen en grupo general para comunicaciones
 
 ---
 
@@ -326,5 +351,5 @@ Preguntas a hacer antes de la reunión:
 ---
 
 **Creado:** 21 de enero de 2026
-**Última actualización:** 21 de enero de 2026
-**Próxima revisión:** Después de confirmar detalles con coordinación nacional
+**Última actualización:** 23 de enero de 2026
+**Próxima revisión:** Después del cierre de Poll #2 (26 enero 7PM)
