@@ -1,0 +1,3 @@
+interface:
+  display_name: "Reel Script Builder"
+  short_description: "Create 60-90s scripts from brief and fact-check inputs"

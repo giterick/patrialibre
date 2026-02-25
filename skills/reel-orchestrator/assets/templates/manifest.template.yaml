@@ -1,0 +1,32 @@
+idea_id: ""
+status: "in_progress"
+created_at: ""
+updated_at: ""
+missing_required_fields: []
+follow_up_questions: []
+defaults_applied: []
+quality_gates:
+  script_structure_complete: false
+  script_duration_60_90: false
+  factcheck_has_sources: false
+  no_proper_names_for_voceria: false
+  multired_plan_ready: false
+skills:
+  reel-intake-brief: "pending"
+  reel-research-factcheck: "pending"
+  reel-script-structure: "pending"
+  reel-production-pack: "pending"
+  reel-oncamera-direction: "pending"
+  reel-editing-publishing: "pending"
+outputs:
+  - "00-manifest.yaml"
+  - "01-creative-brief.md"
+  - "02-factcheck-matrix.md"
+  - "03-script-master.md"
+  - "04-shotlist-storyboard.md"
+  - "05-call-sheet-lite.md"
+  - "06-direccion-talento.md"
+  - "07-plan-arte-y-recursos.md"
+  - "08-edicion-post.md"
+  - "09-publicacion-multired.md"
+  - "10-checklist-pregrabacion.md"

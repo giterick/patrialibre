@@ -1,0 +1,3 @@
+interface:
+  display_name: "Reel Orchestrator"
+  short_description: "Generate full reel production packages from free-text ideas"

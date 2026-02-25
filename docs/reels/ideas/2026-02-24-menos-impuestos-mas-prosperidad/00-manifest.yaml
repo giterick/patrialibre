@@ -1,0 +1,36 @@
+idea_id: "2026-02-24-menos-impuestos-y-menos-burocracia-gener"
+status: "ready"
+created_at: "2026-02-24"
+updated_at: "2026-02-24"
+missing_required_fields: []
+follow_up_questions: []
+defaults_applied:
+  - "segmento_preferido=auto"
+  - "duracion_segundos=75"
+  - "plataformas=[instagram]"
+  - "tono=racional_firme"
+quality_gates:
+  script_structure_complete: true
+  script_duration_60_90: true
+  factcheck_has_sources: true
+  no_proper_names_for_voceria: true
+  multired_plan_ready: true
+skills:
+  reel-intake-brief: "done"
+  reel-research-factcheck: "done"
+  reel-script-structure: "done"
+  reel-production-pack: "done"
+  reel-oncamera-direction: "done"
+  reel-editing-publishing: "done"
+outputs:
+  - "00-manifest.yaml"
+  - "01-creative-brief.md"
+  - "02-factcheck-matrix.md"
+  - "03-script-master.md"
+  - "04-shotlist-storyboard.md"
+  - "05-call-sheet-lite.md"
+  - "06-direccion-talento.md"
+  - "07-plan-arte-y-recursos.md"
+  - "08-edicion-post.md"
+  - "09-publicacion-multired.md"
+  - "10-checklist-pregrabacion.md"

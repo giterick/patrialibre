@@ -1,0 +1,3 @@
+interface:
+  display_name: "Reel Factcheck"
+  short_description: "Validate reel claims with evidence and source status"
