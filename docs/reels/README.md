@@ -64,9 +64,25 @@ Restricciones o contexto local:
 ## Nota de implementacion
 Si faltan campos criticos, el sistema genera `00-manifest.yaml` con `status: blocked` y preguntas puntuales para completar la idea.
 
+## Publicacion en GitHub Pages
+### Regla de publicacion
+- Solo se publica una idea cuando `00-manifest.yaml` tiene `status: approved`.
+- Estados distintos de `approved` no aparecen en el indice publico.
+
+### Archivos visibles en Pages
+- Se muestran solo los `.md` del paquete estandar.
+- No se publican en el menu `idea-input.yaml` ni `00-manifest.yaml`.
+
+### Flujo para publicar
+1. Generar y revisar el paquete en `docs/reels/ideas/<idea-folder>/`.
+2. Marcar `status: approved` en `00-manifest.yaml`.
+3. Ejecutar el script de build de paginas publicas.
+4. Hacer push/merge para que GitHub Pages refleje el indice actualizado.
+
 ## Scripts utiles (PowerShell)
 ```powershell
 powershell -ExecutionPolicy Bypass -File skills\validate_skills.ps1
 powershell -ExecutionPolicy Bypass -File skills\reel-orchestrator\scripts\parse_idea_text.ps1 -IdeaTextPath docs\reels\examples\idea-completa.txt -OutputYamlPath docs\reels\ideas\2026-02-25-ejemplo\idea-input.yaml
 powershell -ExecutionPolicy Bypass -File skills\reel-orchestrator\scripts\validate_reel_package.ps1 -IdeaFolder docs\reels\ideas\2026-02-25-ejemplo
+powershell -ExecutionPolicy Bypass -File skills\reel-orchestrator\scripts\build_pages_publicados.ps1
 ```
