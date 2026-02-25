@@ -42,6 +42,7 @@ Execute the complete reel workflow from idea intake to final package.
 6. Update `00-manifest.yaml` with final status.
 7. If `status: approved`, rebuild public pages index.
    - Run `scripts/build_pages_publicados.ps1`.
+   - This step also updates `DOCS_VERSION` in `index.html` for cache busting.
 
 ## Blocking logic
 Set `status: blocked` when:
@@ -60,3 +61,4 @@ When blocked:
 
 ## Publication rule
 - Do not include ideas in public pages indexes unless `00-manifest.yaml` has `status: approved`.
+- Public links must be generated as hash absolute routes (`#/docs/...`) with `?v=<DOCS_VERSION>`.

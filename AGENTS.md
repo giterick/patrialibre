@@ -76,7 +76,7 @@ If blocked:
 - Publish only ideas with `status: approved` in `00-manifest.yaml`.
 - Keep `idea-input.yaml` and `00-manifest.yaml` out of public navigation.
 - Expose only the 10 markdown package documents in public indexes.
-- Rebuild public pages index with:
+- Rebuild public pages index and bump docs cache version with:
   - `powershell -ExecutionPolicy Bypass -File skills\reel-orchestrator\scripts\build_pages_publicados.ps1`
 
 ## Editorial policy (global)

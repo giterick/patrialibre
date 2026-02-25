@@ -1,7 +1,10 @@
 param(
   [string]$IdeasRoot = "docs/reels/ideas",
-  [string]$PublicRoot = "docs/reels/publicados"
+  [string]$PublicRoot = "docs/reels/publicados",
+  [string]$IndexPath = "index.html"
 )
+
+$ErrorActionPreference = "Stop"
 
 $standardDocs = @(
   "01-creative-brief.md",
@@ -31,6 +34,45 @@ function Get-ManifestStatus {
   return $match.Groups[1].Value.Trim().ToLowerInvariant()
 }
 
+function Update-DocsVersionInIndex {
+  param(
+    [string]$IndexFilePath,
+    [string]$Version
+  )
+
+  if (-not (Test-Path -LiteralPath $IndexFilePath)) {
+    throw "Index file not found: $IndexFilePath"
+  }
+
+  $indexRaw = Get-Content -LiteralPath $IndexFilePath -Raw -Encoding UTF8
+  if ([string]::IsNullOrWhiteSpace($indexRaw)) {
+    throw "index.html is empty or unreadable: $IndexFilePath"
+  }
+
+  $pattern = "(?m)^(\s*const\s+DOCS_VERSION\s*=\s*')[^']+(';\s*)$"
+  if ([regex]::IsMatch($indexRaw, $pattern)) {
+    $updated = [regex]::Replace(
+      $indexRaw,
+      $pattern,
+      { param($m) $m.Groups[1].Value + $Version + $m.Groups[2].Value },
+      1
+    )
+  } else {
+    $injectPattern = "(?m)^(\s*<script>\s*)$"
+    if (-not [regex]::IsMatch($indexRaw, $injectPattern)) {
+      throw "Could not find <script> block in index.html to inject DOCS_VERSION."
+    }
+    $updated = [regex]::Replace(
+      $indexRaw,
+      $injectPattern,
+      { param($m) $m.Groups[1].Value + "`r`n    const DOCS_VERSION = '$Version';" },
+      1
+    )
+  }
+
+  Set-Content -LiteralPath $IndexFilePath -Value $updated -Encoding UTF8
+}
+
 if (-not (Test-Path -LiteralPath $IdeasRoot)) {
   throw "Ideas root not found: $IdeasRoot"
 }
@@ -38,6 +80,9 @@ if (-not (Test-Path -LiteralPath $IdeasRoot)) {
 if (-not (Test-Path -LiteralPath $PublicRoot)) {
   New-Item -ItemType Directory -Path $PublicRoot -Force | Out-Null
 }
+
+$docsVersion = (Get-Date).ToUniversalTime().ToString("yyyyMMddHHmmss")
+Update-DocsVersionInIndex -IndexFilePath $IndexPath -Version $docsVersion
 
 $ideaDirs = Get-ChildItem -LiteralPath $IdeasRoot -Directory | Sort-Object Name
 $approvedIdeaDirs = New-Object System.Collections.Generic.List[object]
@@ -64,6 +109,15 @@ foreach ($dir in $ideaDirs) {
   $approvedIdeaDirs.Add($dir)
 }
 
+# Remove stale public idea directories that are no longer approved.
+$currentApprovedNames = $approvedIdeaDirs | ForEach-Object { $_.Name }
+$publicIdeaDirs = Get-ChildItem -LiteralPath $PublicRoot -Directory -ErrorAction SilentlyContinue
+foreach ($publicIdeaDir in $publicIdeaDirs) {
+  if ($currentApprovedNames -notcontains $publicIdeaDir.Name) {
+    Remove-Item -LiteralPath $publicIdeaDir.FullName -Recurse -Force
+  }
+}
+
 foreach ($approvedDir in $approvedIdeaDirs) {
   $publicIdeaDir = Join-Path $PublicRoot $approvedDir.Name
   if (-not (Test-Path -LiteralPath $publicIdeaDir)) {
@@ -72,6 +126,7 @@ foreach ($approvedDir in $approvedIdeaDirs) {
 
   $existingDocs = New-Object System.Collections.Generic.List[string]
   $missingDocs = New-Object System.Collections.Generic.List[string]
+
   foreach ($doc in $standardDocs) {
     $sourceDocPath = Join-Path $approvedDir.FullName $doc
     if (Test-Path -LiteralPath $sourceDocPath) {
@@ -88,11 +143,13 @@ foreach ($approvedDir in $approvedIdeaDirs) {
   $ideaLines += "Este indice lista los documentos del paquete estandar disponibles para esta idea."
   $ideaLines += ""
   $ideaLines += "## Documentos"
+
   if ($existingDocs.Count -eq 0) {
     $ideaLines += "- No hay documentos markdown publicables en esta idea."
   } else {
     foreach ($doc in $existingDocs) {
-      $ideaLines += "- [$doc](../../ideas/$($approvedDir.Name)/$doc)"
+      $href = "#/docs/reels/ideas/$($approvedDir.Name)/${doc}?v=${docsVersion}"
+      $ideaLines += "- [$doc]($href)"
     }
   }
 
@@ -105,6 +162,8 @@ foreach ($approvedDir in $approvedIdeaDirs) {
     }
   }
 
+  $ideaLines += ""
+  $ideaLines += "_Version de docs: ${docsVersion}_"
   $ideaLines -join "`n" | Set-Content -LiteralPath $ideaReadmePath -Encoding UTF8
 }
 
@@ -120,7 +179,8 @@ if ($approvedIdeaDirs.Count -eq 0) {
   $globalLines += "- No hay ideas aprobadas para publicar."
 } else {
   foreach ($approvedDir in $approvedIdeaDirs) {
-    $globalLines += "- [$($approvedDir.Name)](./$($approvedDir.Name)/README.md)"
+    $href = "#/docs/reels/publicados/$($approvedDir.Name)/README.md?v=$docsVersion"
+    $globalLines += "- [$($approvedDir.Name)]($href)"
   }
 }
 
@@ -146,11 +206,13 @@ if ($skippedNonApproved.Count -eq 0) {
 }
 
 $globalLines += ""
+$globalLines += "_Version de docs: ${docsVersion}_"
 $globalLines += "_Generado automaticamente por build_pages_publicados.ps1._"
 
 $globalLines -join "`n" | Set-Content -LiteralPath $publicReadmePath -Encoding UTF8
 
 Write-Output "PUBLIC_PAGES_BUILD_OK"
+Write-Output ("DOCS_VERSION: " + $docsVersion)
 Write-Output ("Approved ideas: " + $approvedIdeaDirs.Count)
 Write-Output ("Skipped (no manifest): " + $skippedNoManifest.Count)
 Write-Output ("Skipped (non-approved): " + $skippedNonApproved.Count)
