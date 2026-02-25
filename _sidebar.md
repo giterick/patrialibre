@@ -30,3 +30,8 @@
   * [Instagram @patrialibre.do](https://instagram.com/patrialibre.do)
   * [Twitter/X @Patrialibre_do](https://twitter.com/Patrialibre_do)
   * [GitHub - Este Repositorio](https://github.com/giterick/patrialibre)
+
+---
+
+* Produccion de Reels
+  * [Guia de Reels](docs/reels/README.md)
