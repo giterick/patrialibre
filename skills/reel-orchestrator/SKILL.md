@@ -43,6 +43,7 @@ Execute the complete reel workflow from idea intake to final package.
 7. If `status: approved`, rebuild public pages index.
    - Run `scripts/build_pages_publicados.ps1`.
    - This step also updates `DOCS_VERSION` in `index.html` for cache busting.
+   - Use `-SiteBaseUrl` if the GitHub Pages base domain/path differs.
 
 ## Blocking logic
 Set `status: blocked` when:
@@ -61,4 +62,4 @@ When blocked:
 
 ## Publication rule
 - Do not include ideas in public pages indexes unless `00-manifest.yaml` has `status: approved`.
-- Public links must be generated as hash absolute routes (`#/docs/...`) with `?v=<DOCS_VERSION>`.
+- Public links must be generated as full absolute GitHub Pages URLs with hash route and `?v=<DOCS_VERSION>`.

@@ -78,6 +78,8 @@ If blocked:
 - Expose only the 10 markdown package documents in public indexes.
 - Rebuild public pages index and bump docs cache version with:
   - `powershell -ExecutionPolicy Bypass -File skills\reel-orchestrator\scripts\build_pages_publicados.ps1`
+- If needed, set GitHub Pages base URL:
+  - `powershell -ExecutionPolicy Bypass -File skills\reel-orchestrator\scripts\build_pages_publicados.ps1 -SiteBaseUrl https://giterick.github.io/patrialibre`
 
 ## Editorial policy (global)
 - Never use proper names for spokesperson/talent.
