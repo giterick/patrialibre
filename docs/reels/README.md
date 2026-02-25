@@ -83,6 +83,7 @@ Si faltan campos criticos, el sistema genera `00-manifest.yaml` con `status: blo
 - El build de paginas publicas actualiza `DOCS_VERSION` en `index.html`.
 - Los links publicos se generan como rutas hash absolutas (`#/docs/...`) con `?v=<DOCS_VERSION>`.
 - El sitio recarga sidebar/homepage con esa version para minimizar necesidad de hard refresh.
+- El script acepta `-SiteBaseUrl` para definir dominio base de GitHub Pages si cambia.
 
 ## Scripts utiles (PowerShell)
 ```powershell
@@ -90,4 +91,5 @@ powershell -ExecutionPolicy Bypass -File skills\validate_skills.ps1
 powershell -ExecutionPolicy Bypass -File skills\reel-orchestrator\scripts\parse_idea_text.ps1 -IdeaTextPath docs\reels\examples\idea-completa.txt -OutputYamlPath docs\reels\ideas\2026-02-25-ejemplo\idea-input.yaml
 powershell -ExecutionPolicy Bypass -File skills\reel-orchestrator\scripts\validate_reel_package.ps1 -IdeaFolder docs\reels\ideas\2026-02-25-ejemplo
 powershell -ExecutionPolicy Bypass -File skills\reel-orchestrator\scripts\build_pages_publicados.ps1
+powershell -ExecutionPolicy Bypass -File skills\reel-orchestrator\scripts\build_pages_publicados.ps1 -SiteBaseUrl https://giterick.github.io/patrialibre
 ```

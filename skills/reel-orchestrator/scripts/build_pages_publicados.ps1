@@ -1,7 +1,8 @@
 param(
   [string]$IdeasRoot = "docs/reels/ideas",
   [string]$PublicRoot = "docs/reels/publicados",
-  [string]$IndexPath = "index.html"
+  [string]$IndexPath = "index.html",
+  [string]$SiteBaseUrl = "https://giterick.github.io/patrialibre"
 )
 
 $ErrorActionPreference = "Stop"
@@ -148,7 +149,7 @@ foreach ($approvedDir in $approvedIdeaDirs) {
     $ideaLines += "- No hay documentos markdown publicables en esta idea."
   } else {
     foreach ($doc in $existingDocs) {
-      $href = "#/docs/reels/ideas/$($approvedDir.Name)/${doc}?v=${docsVersion}"
+      $href = "$SiteBaseUrl/#/docs/reels/ideas/$($approvedDir.Name)/${doc}?v=${docsVersion}"
       $ideaLines += "- [$doc]($href)"
     }
   }
@@ -179,7 +180,7 @@ if ($approvedIdeaDirs.Count -eq 0) {
   $globalLines += "- No hay ideas aprobadas para publicar."
 } else {
   foreach ($approvedDir in $approvedIdeaDirs) {
-    $href = "#/docs/reels/publicados/$($approvedDir.Name)/README.md?v=$docsVersion"
+    $href = "$SiteBaseUrl/#/docs/reels/publicados/$($approvedDir.Name)/README.md?v=$docsVersion"
     $globalLines += "- [$($approvedDir.Name)]($href)"
   }
 }
