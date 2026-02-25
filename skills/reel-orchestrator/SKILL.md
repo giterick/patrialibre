@@ -13,6 +13,7 @@ Execute the complete reel workflow from idea intake to final package.
 - `assets/templates/manifest.template.yaml`
 - `scripts/parse_idea_text.ps1`
 - `scripts/validate_reel_package.ps1`
+- `scripts/build_pages_publicados.ps1`
 
 ## Inputs
 - Free-form idea text from conversation.
@@ -39,6 +40,8 @@ Execute the complete reel workflow from idea intake to final package.
 5. Validate quality gates.
    - Prefer `scripts/validate_reel_package.ps1` for package checks.
 6. Update `00-manifest.yaml` with final status.
+7. If `status: approved`, rebuild public pages index.
+   - Run `scripts/build_pages_publicados.ps1`.
 
 ## Blocking logic
 Set `status: blocked` when:
@@ -54,3 +57,6 @@ When blocked:
 - Never use proper names for spokesperson/talent.
 - Use only `talento`, `voceria`, or `responsable`.
 - Mark any unsupported claim as `no_apto`.
+
+## Publication rule
+- Do not include ideas in public pages indexes unless `00-manifest.yaml` has `status: approved`.

@@ -72,6 +72,13 @@ If blocked:
 10. `09-publicacion-multired.md`
 11. `10-checklist-pregrabacion.md`
 
+## Publishing policy for GitHub Pages
+- Publish only ideas with `status: approved` in `00-manifest.yaml`.
+- Keep `idea-input.yaml` and `00-manifest.yaml` out of public navigation.
+- Expose only the 10 markdown package documents in public indexes.
+- Rebuild public pages index with:
+  - `powershell -ExecutionPolicy Bypass -File skills\reel-orchestrator\scripts\build_pages_publicados.ps1`
+
 ## Editorial policy (global)
 - Never use proper names for spokesperson/talent.
 - Only use: `talento`, `voceria`, or `responsable`.

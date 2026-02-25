@@ -35,3 +35,4 @@
 
 * Produccion de Reels
   * [Guia de Reels](docs/reels/README.md)
+  * [Ideas Publicadas](docs/reels/publicados/README.md)
