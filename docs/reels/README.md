@@ -79,6 +79,11 @@ Si faltan campos criticos, el sistema genera `00-manifest.yaml` con `status: blo
 3. Ejecutar el script de build de paginas publicas.
 4. Hacer push/merge para que GitHub Pages refleje el indice actualizado.
 
+### Cache busting por deploy
+- El build de paginas publicas actualiza `DOCS_VERSION` en `index.html`.
+- Los links publicos se generan como rutas hash absolutas (`#/docs/...`) con `?v=<DOCS_VERSION>`.
+- El sitio recarga sidebar/homepage con esa version para minimizar necesidad de hard refresh.
+
 ## Scripts utiles (PowerShell)
 ```powershell
 powershell -ExecutionPolicy Bypass -File skills\validate_skills.ps1

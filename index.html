@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -46,17 +46,19 @@
 <body>
   <div id="app">Cargando...</div>
   <script>
+    const DOCS_VERSION = '20260225052510';
+
     window.$docsify = {
       name: '🇩🇴 Patria Libre<br><small>Punta Cana / Bavaro</small>',
       repo: 'giterick/patrialibre',
-      loadSidebar: true,
+      loadSidebar: '_sidebar.md?v=' + DOCS_VERSION,
       subMaxLevel: 3,
       auto2top: true,
-      homepage: 'README.md',
+      homepage: 'README.md?v=' + DOCS_VERSION,
 
       // Búsqueda
       search: {
-        maxAge: 86400000, // 1 día de cache
+        maxAge: 300000, // 5 minutos de cache
         paths: 'auto',
         placeholder: 'Buscar...',
         noData: 'No se encontraron resultados',
@@ -147,3 +149,9 @@
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
 </body>
 </html>
+
+
+
+
+
+
