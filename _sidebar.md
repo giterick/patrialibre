@@ -25,6 +25,11 @@
 
 ---
 
+* 📊 **Encuestas**
+  * [Departamento de Encuestas](docs/encuestas/README.md)
+
+---
+
 * 🔗 **Enlaces Útiles**
   * [Patria Libre Nacional](https://patrialibre.do)
   * [Instagram @patrialibre.do](https://instagram.com/patrialibre.do)
